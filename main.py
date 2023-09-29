@@ -1,4 +1,4 @@
-
+import random
 
 CARD_SUITS = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 
@@ -19,3 +19,18 @@ class Card:
 
     def __str__(self):
         return f'{self.rank} of {self.suit}'
+
+
+class Deck:
+
+    def __init__(self):
+        self.all_cards = []
+        for suit in CARD_SUITS:
+            for rank in CARD_RANKS:
+                self.all_cards.append(Card(suit, rank))
+
+    def shuffle_cards(self):
+        random.shuffle(self.all_cards)
+
+    def deal_one_card(self):
+        return self.all_cards.pop()
